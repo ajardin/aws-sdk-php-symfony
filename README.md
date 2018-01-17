@@ -42,6 +42,12 @@ Configuration is handled by the SDK rather than by the bundle, and no validation
 is performed at compile time. Full documentation of the configuration options
 available can be read in the [SDK Guide](http://docs.aws.amazon.com/aws-sdk-php/v3/guide/guide/configuration.html).
 
+When using the SDK from an EC2 instance, you can write `credentials: ~` to use
+[instance profile credentials](https://docs.aws.amazon.com/aws-sdk-php/v3/guide/guide/credentials.html#instance-profile-credentials).
+This syntax means that temporary credentials will be automatically retrieved
+from the EC2 instance's metadata server. It's also the preferred technique for
+providing credentials to applications running on that specific context.
+
 To use a service for any configuration value, use `@` followed by the service
 name, such as `@a_service`. This syntax will be converted to a service during
 container compilation. If you want to use a string literal that begins with `@`,
